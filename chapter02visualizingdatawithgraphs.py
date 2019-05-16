@@ -40,4 +40,69 @@ months = range(1, 13)
 plot(months, nyc_temp_2000, months, nyc_temp_2006, months, nyc_temp_2012)
 legend([2000, 2006, "year 2012 string"]) #legend() function shows legend
 show()
-#start page 40
+#customize graphs
+from pylab import plot, show, legend, title, xlabel, ylabel
+xyears = [2014, 2015, 2016, 2017, 2018]
+ytotalexpenses = [17509.48, 19553.29, 10438.07, 10563.54, 10496.11]
+plot(xyears, ytotalexpenses)
+title("title() Title")
+xlabel("xlabel() X Label inside quotes")
+ylabel("ylabel() Y Label inside quotes")
+legend(["legend() if not chart junk"])
+show()
+#Set minimum and maximum x-axis and y-axis
+from pylab import plot, show, legend, title, xlabel, ylabel, axis
+nycavgtemps20002012 = [53.9, 56.3, 56.4, 53.4, 54.5, 55.8, 56.8, 55.0, 55.3, 54.0, 56.7, 56.4, 57.3]
+years = range(2000, 2013)
+plot(years, nycavgtemps20002012, marker="*")
+title("New York Average Temperatures")
+xlabel("Years")
+ylabel("Average Temperature (F)")
+legend(["legend() if not chart junk"])
+axis(ymin=0, ymax=60) #RM:  no need to set xmin and xmax because x-axis is years.
+show()
+#If you’re changing all four values, you may find it easier to call the axis() function with all four range values entered as a list, such as axis([0, 10, 0, 20]). This would set the range of the x-axis to (0, 10) and that of the y-axis to (0, 20).
+
+#pyplot
+import matplotlib.pyplot
+def create_graph():
+	x_numbers = [1, 2, 3]
+	y_numbers = [2, 4, 6]
+	matplotlib.pyplot.plot(x_numbers, y_numbers)
+	matplotlib.pyplot.title("import matplotlib.pyplot")	
+	matplotlib.pyplot.show()
+if __name__ == '__main__':
+	create_graph()
+import matplotlib.pyplot as plt
+def create_graph():
+	x_numbers = [1, 2, 3]
+	y_numbers = [2, 4, 6]
+	plt.plot(x_numbers, y_numbers)
+	plt.title("import matplotlib.pyplot as plt")	
+	plt.show()
+	plt.savefig("mygraph.png") #save graph save chart.  Can also save graph save chart pressing Save button on window from show().
+if __name__ == '__main__':
+	create_graph()
+#we’ll use pylab in the interactive shell and pyplot otherwise.
+
+#Plotting With Formulas Newton's Law Of Universal Gravitation.  Use functions.
+#Force F = ((Gravitational Constant G)*(First Body Mass m1)*(Second Body Mass m2))/((Distance between the two bodies r)**2)
+import matplotlib.pyplot as plt
+def newtondrawgraph(x, y):
+	plt.plot(x, y, marker="o")
+	plt.xlabel("Distance in meters")
+	plt.ylabel("Gravitational force in Newtons")
+	plt.title("Gravitational force and distance")
+	plt.show()
+def newtongeneratepoints():
+	r = range(100, 1001, 50)
+	F = []
+	G = 6.674*(10**-11)
+	m1 = 0.5
+	m2 = 1.5
+	for distance in r:
+		force = (G*m1*m2)/(distance**2)
+		F.append(force)
+	newtondrawgraph(r,F)  #plot chart with r as x-values and F as y-values
+if __name__ == '__main__':
+	newtongeneratepoints()  #call function newtongeneratepoints() to create the x-axis points and y-axis points and graph them newtondrawgraph(x, y)
